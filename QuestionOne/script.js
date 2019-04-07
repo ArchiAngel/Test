@@ -3,29 +3,70 @@ const time = prompt("Введите дату в формате YYYY-MM-DD");
 
 appData = {
     userMoney : money, 
-    userTimeData : time 
+    userTimeData : time,
+    savings : false,
+    incame : [],
+    optionalExpenses : {},
+    expenses : {}
 }
 
-const questionOne =  prompt("Введите обязательную статью расходов в этом месяце");
-const questionTwo = prompt("Во сколько это обойдется?");
+for(let i = 0; i < 2;i++)
+{
+    let a = prompt("Введите обязательную статью расходов в этом месяце","");
+    let b = prompt("Во сколько это обойдется?","");
 
-exprenses = {
-    answerOne : questionOne,
-    answerTwo : questionTwo
+
+    if( (typeof(a)) === "string" 
+    && (typeof(a)) != null 
+    && a != "" 
+    && (typeof(b)) != null 
+    && b != "" 
+    && a.length < 50)
+    {
+        console.log("Done!");
+        appData.expenses[a] = b;
+    }
+    else{
+        console.log("Error");
+        
+        let a = prompt("Введите обязательную статью расходов в этом месяце","");
+        let b = prompt("Во сколько это обойдется?","");
+
+
+        if( (typeof(a)) === "string" 
+        && (typeof(a)) != null 
+        && a != "" 
+        && (typeof(b)) != null 
+        && b != "" 
+        && a.length < 50)
+        {
+            console.log("Done!");
+            appData.expenses[a] = b;
+        }
+    }
 }
 
-alert(money/30);
+appData.MoneyPerDay = appData.userMoney / 30;
 
 console.log(appData);
-console.log(exprenses);
-
+alert(appData.MoneyPerDay);
+ 
 /*
-Вопросы к заданию:
+let tir = 0;
+while (tir < 2){
+    let a = prompt("Введите обязательную статью расходов в этом месяце","");
+    let b = prompt("Во сколько это обойдется?","");
 
-1) 6
+    appData.expenses[a] = b";
+    tir++;
 
-2) console.log
+}
+*/
+let doI = 0;
+do {
+    let a = prompt("Введите обязательную статью расходов в этом месяце","");
+    let b = prompt("Во сколько это обойдется?","");
 
-3) ||  "или" когда одно из условий верно то все ок
-   &&  "и" все условия должны быть верны
-   */
+    appData.expenses[a] = b;
+    doI++;
+} while (doI < 2)
